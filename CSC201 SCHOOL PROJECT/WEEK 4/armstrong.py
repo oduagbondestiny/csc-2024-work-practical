@@ -1,33 +1,40 @@
 #Code Objective is to use while loop to check for Armstrong number in certain interval
 
-def is_armstrong(num):
+def armstrong(num):
+
     # Calculate the number of digits in num
     num_digits = len(str(num))
     
-    # Initialize sum of powers to 0
+    # Initialize sum of powers to 0, create a temp veriable to sure num, and a list strong
     sum_of_powers = 0
     temp = num
+    Strong = []
     
     # Calculate sum of digits raised to the power of num_digits
     while temp > 0:
         digit = temp % 10
         sum_of_powers += digit ** num_digits
         temp //= 10
+
+        Strong.append(f"{digit} ^ {num_digits}")
+
     
+    print(f"The n: {num_digits}")
+    print(f"{num} ={Strong}  which is = {sum_of_powers}")
+
     # Check if num is an Armstrong number
-    return num == sum_of_powers
+    if num == sum_of_powers:
 
-# Define the interval
-start = int(input("Enter the starting number of the interval: "))
-end = int(input("Enter the ending number of the interval: "))
+        print("\nThis Number is an ArmStrong Number")
 
-# Validate the interval
-if start >= end:
-    print("Invalid interval. Starting number should be less than the ending number.")
-else:
-    print("Armstrong numbers within the interval:")
-    num = start
-    while num <= end:
-        if is_armstrong(num):
-            print(num)
-        num += 1
+    else:
+
+        print("\nThis Number is not an ArmStrong Number")
+    
+
+# collect user input as interger 
+number = int(input("Enter the number of the interval: "))
+
+print("Armstrong numbers within the interval:")
+armstrong(number)
+        
